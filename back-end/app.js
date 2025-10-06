@@ -78,5 +78,26 @@ app.post('/messages/save', async (req, res) => {
   }
 })
 
+// a route to handle fetching about us info
+app.get('/about-us', async (req, res) => {
+  try {
+    res.json({
+      name: 'Namay Jindal',
+      bio: "I'm a senior at NYU studying Computer and Data Science. I enjoy tinkering around, coming up with spontaneous ideas, and relaxing in the sun with freshly squeezed orange juice. When I'm not coding, you can find me exploring new technologies and working on creative projects.",
+      photoUrl: 'https://media.licdn.com/dms/image/v2/D4D03AQFBAbB32tLD5A/profile-displayphoto-shrink_200_200/B4DZWGntljHAAY-/0/1741720313354?e=1762387200&v=beta&t=Siq00Sd_dbsAi5lzgLrJbaGMYj8QbOQ86xjKCmGLCdk',
+      github: 'https://github.com/namayjindal',
+      linkedin: 'https://www.linkedin.com/in/namay-jindal/',
+      email: 'namayyjindal@gmail.com',
+      status: 'all good',
+    })
+  } catch (err) {
+    console.error(err)
+    res.status(400).json({
+      error: err,
+      status: 'failed to retrieve about us info',
+    })
+  }
+})
+
 // export the express app we created to make it available to other modules
 module.exports = app // CommonJS export style!
